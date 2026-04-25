@@ -27,7 +27,7 @@ terraform/
 
 ---
 
-## 🧩 Contenu des fichiers
+##  Contenu des fichiers
 
 ### **main.tf**
 - Appel des modules  
@@ -68,22 +68,22 @@ terraform fmt
 
 
 
-### 3️⃣ Validation syntaxique
+### 3️ Validation syntaxique
 terraform validate
 
 
 
-### 4️⃣ Prévisualisation des changements
+### 4️ Prévisualisation des changements
 terraform plan
 
 C
 
-### 5️⃣ Déploiement
+### 5️ Déploiement
 terraform apply
 
 Code
 
-### 6️⃣ Suppression (si besoin)
+### 6️ Suppression (si besoin)
 terraform destroy
 
 ---
