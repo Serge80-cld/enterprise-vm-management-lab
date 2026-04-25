@@ -1,74 +1,109 @@
-Enterprise VM Management Lab — CloudOps Automation (PowerShell)
-Ce projet est un lab CloudOps complet, conçu pour reproduire les opérations d’une VM d’entreprise : monitoring, patching, backups, hardening, runbooks automatisés et dashboard HTML.
-Il démontre des compétences clés en PowerShell, automatisation, gestion d’infrastructure, et pratiques Ops modernes inspirées d’Azure, AWS et Intune.
- Objectifs
-Automatiser la gestion d’une VM comme en production
+# Terraform – Infrastructure as Code (IaC)
 
-Mettre en place des runbooks PowerShell exécutés en SYSTEM
+Ce dossier contient la configuration Terraform permettant de déployer une infrastructure Cloud de manière automatisée, reproductible et versionnée.  
+L’objectif est de démontrer une approche professionnelle de l’IaC, inspirée des bonnes pratiques AWS, Azure et DevOps.
 
-Centraliser les logs et opérations dans une structure claire
+---
 
-Générer un dashboard HTML pour la supervision
+##  Objectifs
 
-Fournir un dépôt GitHub professionnel, lisible et réutilisable
+- Déployer une infrastructure Cloud de manière déclarative  
+- Séparer proprement les fichiers (providers, variables, outputs, modules)  
+- Utiliser un backend distant (S3 + DynamoDB) pour le state  
+- Structurer le projet comme en entreprise  
+- Permettre un `terraform plan` et `terraform apply` propres et reproductibles  
 
-Structure du projet
-Code
-powershell/
+---
+
+##  Structure du projet
+terraform/
 │
-├── maintenance/      # Vérifications système
-├── monitoring/       # Collecte CPU/RAM/Disques
-├── patching/         # Windows Update automatisé
-├── backups/          # Snapshots + rotation
-├── hardening/        # Durcissement Windows
-├── runbooks/         # Tâches planifiées (XML)
-└── dashboard/        # Génération du dashboard HTML
+├── main.tf          # Déclaration des ressources principales
+├── providers.tf     # Configuration des providers (AWS / Azure)
+├── variables.tf     # Variables d'entrée
+├── outputs.tf       # Valeurs exportées
+├── backend.tf       # Backend S3 + DynamoDB (optionnel)
+└── modules/         # Modules réutilisables (VPC, EC2, etc.)
 
-dashboard.html        # Portail Ops généré automatiquement
-⚙️ Automatisation (Runbooks)
-Chaque runbook crée une Scheduled Task SYSTEM via XML pour une compatibilité totale.
+---
 
-Runbook	Fréquence	Description
-Monitoring	Toutes les 5 min	Collecte CPU, RAM, disques → logs
-Patching	Hebdo (dimanche 03:00)	Installation des mises à jour
-Backups	Quotidien (02:00)	Snapshot + rotation
-Hardening	Mensuel (1er à 04:00)	Durcissement Windows
+## 🧩 Contenu des fichiers
+
+### **main.tf**
+- Appel des modules  
+- Déclaration des ressources principales  
+- Architecture Cloud (ex : VPC, EC2, NSG, Storage, etc.)
+
+### **providers.tf**
+- Configuration du provider AWS ou Azure  
+- Région  
+- Version du provider  
+- Authentification (profil AWS CLI ou Azure CLI)
+
+### **variables.tf**
+- Définition des variables d’entrée  
+- Types, descriptions, valeurs par défaut
+
+### **outputs.tf**
+- Export des valeurs utiles (IP publique, ID de la VM, VPC ID…)
+
+### **backend.tf** *(optionnel mais recommandé)*
+Backend S3 + DynamoDB :
+
+- Stockage du state dans un bucket S3  
+- Verrouillage du state via DynamoDB  
+- Sécurisation du workflow Terraform  
+
+---
+
+##  Workflow Terraform (pro)
+
+### 1️ Initialisation
+terraform init
 
 
-Les logs sont stockés dans :
+
+### 2️ Formatage du code
+terraform fmt
+
+
+
+### 3️⃣ Validation syntaxique
+terraform validate
+
+
+
+### 4️⃣ Prévisualisation des changements
+terraform plan
+
+C
+
+### 5️⃣ Déploiement
+terraform apply
 
 Code
-C:\Logs\monitoring
-C:\Logs\backups
-C:\Logs\hardening
-Dashboard HTML
-Le fichier dashboard.html affiche :
 
-Dernier monitoring
+### 6️⃣ Suppression (si besoin)
+terraform destroy
 
-Dernier backup
+---
 
-Dernier hardening
+##  Bonnes pratiques intégrées
 
-État des tâches planifiées VM-*
+- Code formaté (`terraform fmt`)  
+- Validation systématique (`terraform validate`)  
+- Backend distant pour éviter les conflits de state  
+- Modules pour séparer les responsabilités  
+- Variables typées et documentées  
+- Outputs propres pour intégration avec d’autres outils  
 
-Vue synthétique de la santé de la VM
+---
 
-Ce dashboard peut être ouvert dans n’importe quel navigateur et sert de mini portail Ops.
+##  Points forts
 
-🧩 Technologies & Concepts
-PowerShell 5+
+- Structure professionnelle, prête pour un environnement CloudOps  
+- Compatible AWS et Azure  
+- Approche modulaire et maintenable  
+- Workflow IaC complet et reproductible  
+- Idéal pour démontrer des compétences Terraform en entretien  
 
-Scheduled Tasks SYSTEM
-
-XML Task Definitions
-
-Logging structuré
-
-HTML/CSS
-
-Architecture CloudOps inspirée d’Azure Automation, AWS Systems Manager, Intune Remediation
-
-Auteur
-Serge — Cloud / Modern Workplace Engineer  
-Lab conçu pour démontrer des compétences CloudOps, automatisation et gestion d’infrastructure.
