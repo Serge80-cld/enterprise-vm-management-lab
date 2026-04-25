@@ -76,12 +76,12 @@ terraform validate
 ### 4️ Prévisualisation des changements
 terraform plan
 
-C
+
 
 ### 5️ Déploiement
 terraform apply
 
-Code
+
 
 ### 6️ Suppression (si besoin)
 terraform destroy
