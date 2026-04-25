@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+  <title>SergeLab - VM Ops Dashboard</title>
+  <style>
+    body { font-family: Segoe UI, Arial; background:#111; color:#eee; }
+    h1 { color:#4ea3ff; }
+    .card { background:#1c1c1c; padding:15px; margin-bottom:15px; border-radius:6px; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { padding:8px; border-bottom:1px solid #333; text-align:left; }
+    th { background:#222; }
+    .ok { color:#7CFC00; }
+    .warn { color:#FFA500; }
+  </style>
+</head>
+<body>
+  <h1>SergeLab - VM Ops Dashboard</h1>
+
+  <div class="card">
+    <h2>Derniers Ã©vÃ©nements</h2>
+    <p><b>Dernier monitoring :</b> 04/25/2026 05:24:58</p>
+    <p><b>Dernier backup :</b> 04/24/2026 21:53:12</p>
+    <p><b>Dernier hardening :</b> </p>
+  </div>
+
+  <div class="card">
+    <h2>TÃ¢ches planifiÃ©es VM-*</h2>
+    <table>
+      <tr><th>Nom</th><th>Ã‰tat</th></tr><tr><td>VM-Backup</td><td>Ready</td></tr><tr><td>VM-Hardening</td><td>Ready</td></tr><tr><td>VM-Monitoring</td><td>Ready</td></tr><tr><td>VM-Patching</td><td>Ready</td></tr>    </table>
+  </div>
+</body>
+</html>
